@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Rota do Tesouro</title>
+<meta name="description" content="A dívida do Brasil explicada de um jeito simples: por que dever em reais é diferente de dever em dólar, comparado com Argentina e Estados Unidos, quanto custam os juros, quem paga e quem recebe.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: the Rotas skeleton in the easy-reading format (big type, short sentences, one picture per idea). The Tesouro route's own colour is a deep violet.
+   Order: question → short answer → what debt is → reais vs dollars (Brasil, Argentina, EUA) → debt over time → interest: how much, who pays, who receives → what costs more → true or false → summary → all the numbers. */
+:root{
+  --bg:#f1f0f4; --paper:#fbfbfd; --ink:#1b1a22; --muted:#5d5a68; --line:#d6d3de; --soft:#e7e5ec;
+  --accent:#5a3f8c; --accent-soft:#e6e0f1;
+  --own:#1baf7a; --usd:#eb6834; --gray:#8a8c92;
+  --ok:#1f6b45; --ok-soft:#dcefe3; --no:#a12a2a; --no-soft:#f6dede; --part:#7a5a00; --part-soft:#f6ebc9;
+  --display:"Archivo","Arial Narrow",Impact,sans-serif;
+  --ui:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --text:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#121117; --paper:#1a1920; --ink:#ebe9f0; --muted:#a6a2b2; --line:#2e2c37; --soft:#24222c;
+  --accent:#b49ae6; --accent-soft:#2a2240;
+  --own:#199e70; --usd:#d95926; --gray:#6e7077;
+  --ok:#7fd3a3; --ok-soft:#173326; --no:#f19b9b; --no-soft:#3a1c1c; --part:#e8c25a; --part-soft:#3a3016; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121117; --paper:#1a1920; --ink:#ebe9f0; --muted:#a6a2b2; --line:#2e2c37; --soft:#24222c;
+  --accent:#b49ae6; --accent-soft:#2a2240;
+  --own:#199e70; --usd:#d95926; --gray:#6e7077;
+  --ok:#7fd3a3; --ok-soft:#173326; --no:#f19b9b; --no-soft:#3a1c1c; --part:#e8c25a; --part-soft:#3a3016; color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:19px;line-height:1.7}
+a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.wrap{max-width:880px;margin:0 auto;padding-inline:16px}
+.kicker,.mono{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.kicker{color:var(--accent)}
+h1{font-family:var(--display);font-stretch:62%;font-weight:900;font-size:clamp(46px,11vw,104px);line-height:.9;margin:0;text-transform:uppercase;overflow-wrap:anywhere}
+h2{font-family:var(--display);font-stretch:66%;font-weight:800;font-size:clamp(34px,7vw,52px);line-height:.95;margin:0;text-transform:uppercase;text-wrap:balance}
+h3{font-family:var(--ui);font-weight:700;font-size:22px;line-height:1.2;margin:0;text-wrap:balance}
+p{margin:0}
+header,section{display:grid;grid-template-columns:minmax(0,1fr)}
+header{padding-block:40px 8px;gap:18px}
+section{padding-block:48px 8px;gap:18px}
+.lg{font-size:21px;line-height:1.6}
+.sub{color:var(--muted);max-width:62ch}
+.src{font-family:var(--mono);font-size:12px;color:var(--muted);display:flex;flex-wrap:wrap;gap:2px 14px;line-height:1.5}
+.src a{color:var(--muted)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:20px;display:grid;gap:12px;align-content:start}
+.answer-box{background:var(--accent-soft);border:2px solid var(--accent);border-radius:6px;padding:20px;margin-top:40px}
+.note{font-size:16px;color:var(--muted)}
+
+/* how debt works */
+.flow{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:10px;align-items:center}
+.who{background:var(--paper);border:2px solid var(--accent);border-radius:8px;padding:14px;display:grid;gap:4px;justify-items:center;text-align:center}
+.who .emo{font-size:48px;line-height:1}
+.who b{font-family:var(--ui);font-size:19px;line-height:1.25}
+.who span{font-size:15px;color:var(--muted);line-height:1.4}
+.arrows{display:grid;gap:8px;font-family:var(--ui);font-weight:700;font-size:15px;text-align:center}
+.arrows span{display:block;padding:6px 10px;border-radius:999px;background:var(--soft);white-space:nowrap}
+
+/* coins: own currency vs dollars */
+.coins3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.coins{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:3px}
+.coins i{aspect-ratio:1;border-radius:50%;background:var(--own);display:block}
+.coins i.u{background:var(--usd)}
+.flag{font-size:40px;line-height:1}
+.coins3 .card h3{font-size:24px}
+.coins3 .card .n{font-family:var(--display);font-stretch:66%;font-weight:800;font-size:30px;line-height:1;text-transform:uppercase;color:var(--c)}
+.coins3 .card p{font-size:16px;line-height:1.5}
+.leg{display:flex;flex-wrap:wrap;gap:6px 18px;font-family:var(--ui);font-weight:600;font-size:16px}
+.leg i{display:inline-block;width:16px;height:16px;border-radius:50%;background:var(--c);margin-right:6px;vertical-align:-2px}
+.lesson{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.lesson .card{border-left:6px solid var(--c)}
+.lesson .card b{font-family:var(--ui);font-size:20px;line-height:1.3}
+.lesson .card p{font-size:17px}
+
+/* bars */
+.tl{display:grid;gap:10px}
+.tr{display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
+.tr .lab{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-family:var(--ui);font-weight:700;font-size:17px}
+.tr .lab span{font-family:var(--mono);font-weight:500;font-size:13px;color:var(--muted)}
+.tr .t{height:30px;background:var(--soft);border-radius:3px;position:relative}
+.tr .f{position:absolute;inset:0 auto 0 0;background:var(--c);border-radius:3px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:var(--paper);font-family:var(--mono);font-weight:600;font-size:14px;white-space:nowrap}
+.tr .v{position:absolute;top:0;bottom:0;display:flex;align-items:center;font-family:var(--mono);font-weight:600;font-size:14px;color:var(--ink);white-space:nowrap}
+.era{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+
+/* big number + 100 coins of GDP */
+.bign{font-family:var(--display);font-stretch:62%;font-weight:900;font-size:clamp(64px,16vw,120px);line-height:.85;color:var(--accent)}
+.pib{display:grid;grid-template-columns:repeat(20,minmax(0,1fr));gap:4px;max-width:560px}
+.pib i{aspect-ratio:1;border-radius:50%;background:var(--soft);border:1px solid var(--line);display:block}
+.pib i.j{background:var(--accent);border-color:var(--accent)}
+.pib i.h{background:linear-gradient(90deg,var(--accent) 86%,var(--soft) 86%);border-color:var(--accent)}
+.steps{display:grid;gap:10px;counter-reset:s}
+.steps div{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;align-items:start;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:14px}
+.steps div::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--accent);color:var(--paper);font-family:var(--ui);font-weight:800;font-size:22px}
+.steps p{font-size:18px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.two .card{border-top:6px solid var(--c)}
+.two .card h3{font-size:20px}
+.two .card p{font-size:17px}
+
+/* true or false */
+.vf{display:grid;gap:12px}
+.vfi{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:16px 18px;display:grid;gap:8px}
+.vfi p{font-size:18px}
+.badge{justify-self:start;font-family:var(--ui);font-weight:800;font-size:15px;letter-spacing:.04em;text-transform:uppercase;padding:4px 12px;border-radius:999px}
+.badge.f{background:var(--no-soft);color:var(--no);border:2px solid var(--no)}
+.badge.m{background:var(--part-soft);color:var(--part);border:2px solid var(--part)}
+.badge.v{background:var(--ok-soft);color:var(--ok);border:2px solid var(--ok)}
+
+.verdict{background:var(--ink);color:var(--paper);border-radius:6px;padding:22px 20px;display:grid;gap:12px}
+.verdict h2{color:var(--paper)}
+.verdict ul{margin:0;padding-left:20px;display:grid;gap:8px;font-size:20px}
+details.mais{margin-top:44px;border:2px solid var(--line);border-radius:6px;background:var(--paper)}
+details.mais>summary{cursor:pointer;padding:18px 20px;font-family:var(--ui);font-weight:700;font-size:19px;list-style:none;display:flex;justify-content:space-between;gap:12px}
+details.mais>summary::after{content:"+";font-family:var(--mono);font-size:24px;line-height:1}
+details.mais[open]>summary::after{content:"−"}
+details.mais>summary::-webkit-details-marker{display:none}
+.mais-body{padding:0 20px 20px;font-size:17px;line-height:1.6;display:grid;gap:14px}
+.mais-body table{width:100%;border-collapse:collapse;font-size:15px}
+.mais-body th,.mais-body td{text-align:left;padding:8px 6px;border-top:1px solid var(--line);vertical-align:top}
+.mais-body th{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.mais-body td:last-child{font-family:var(--mono);white-space:nowrap}
+footer{padding-block:44px 60px;color:var(--muted);font-size:14px;display:grid;gap:8px}
+@media (max-width:640px){.coins3{grid-template-columns:minmax(0,1fr)}.coins{max-width:220px}}
+@media (max-width:520px){.flow{grid-template-columns:minmax(0,1fr)}.arrows{grid-auto-flow:column;justify-content:center}.pib{grid-template-columns:repeat(10,minmax(0,1fr))}}
+</style>
+</head><body>
+
+
+<style>/* barra comum das Rotas */.rotas-bar{border-bottom:1px solid var(--line);background:var(--bg);font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}.rotas-bar>div{max-width:880px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px}.rotas-bar a{color:var(--muted);text-decoration:none;padding-block:2px;border-bottom:2px solid transparent}.rotas-bar a:hover{color:var(--ink)}.rotas-bar a[aria-current]{color:var(--ink);border-bottom-color:var(--accent)}.rotas-bar .rb-home{color:var(--accent);font-weight:600}.rotas-bar a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}</style><nav class="rotas-bar" aria-label="Rotas"><div><a class="rb-home" href="https://fcarvalhodev.github.io/rotas/">Rotas</a><a href="https://fcarvalhodev.github.io/rota-washington/">Washington</a><a href="https://fcarvalhodev.github.io/rota-master/">Master</a><a href="https://fcarvalhodev.github.io/rota-curitiba/">Curitiba</a><a href="https://fcarvalhodev.github.io/rota-da-fe/">Fé</a><a href="https://fcarvalhodev.github.io/rota-esplanada/">Esplanada</a><a href="https://fcarvalhodev.github.io/rota-itamaraty/">Itamaraty</a><a href="https://fcarvalhodev.github.io/rota-da-picanha/">Picanha</a><a href="https://fcarvalhodev.github.io/rota-do-ibge/">IBGE</a><a href="https://fcarvalhodev.github.io/rota-velho-chico/">Velho Chico</a><a href="https://fcarvalhodev.github.io/rota-do-tesouro/" aria-current="page">Tesouro</a><a href="https://fcarvalhodev.github.io/rota-rouanet/">Rouanet</a><a href="https://fcarvalhodev.github.io/rota-dos-ventos/">Ventos</a></div></nav>
+<header class="wrap">
+  <div class="kicker">Rota do Tesouro</div>
+  <h1>A dívida do Brasil é um perigo?</h1>
+  <p class="lede lg">Em 12 meses o governo gastou R$ 1,18 trilhão só com juros da dívida. Muita gente diz que o Brasil vai quebrar, que quem paga é o povo, ou que o mais caro mesmo é o perdão de dívidas do agro. Aqui está o que os números mostram, em palavras simples.</p>
+</header>
+
+<main class="wrap">
+
+<section class="answer-box" aria-labelledby="h-curta">
+  <h2 id="h-curta">A resposta curta</h2>
+  <p class="lg">A dívida é grande e está crescendo. Mas <b>quase toda é em reais</b>, devida a bancos, fundos e pessoas daqui, e o país guarda muitos dólares de reserva. Por isso o Brasil não corre o risco de calote da Argentina. O problema de verdade são os <b>juros altos</b>: custam quase o dobro de tudo que o governo federal deixa de cobrar em benefícios fiscais, incluindo os do agro.</p>
+</section>
+
+<section aria-labelledby="h-oque">
+  <h2 id="h-oque">O que é a dívida</h2>
+  <p class="sub lg">Quando o governo gasta mais do que arrecada, ele pega dinheiro emprestado. Ele faz isso vendendo títulos, que são promessas de devolver o dinheiro depois, com juros.</p>
+  <div class="flow" role="img" aria-label="O governo vende títulos para quem empresta e devolve o dinheiro depois, com juros">
+    <div class="who"><span class="emo" aria-hidden="true">🏛️</span><b>Governo</b><span>precisa de dinheiro</span></div>
+    <div class="arrows" aria-hidden="true"><span>título →</span><span>← dinheiro</span><span>juros →</span></div>
+    <div class="who"><span class="emo" aria-hidden="true">🏦</span><b>Quem empresta</b><span>bancos, fundos de aposentadoria, fundos de investimento, quem aplica no Tesouro Direto</span></div>
+  </div>
+  <p class="lg">É parecido com uma família que usa o cartão de crédito. O que importa não é só quanto ela deve, mas <b>em que moeda deve</b> e <b>quanto paga de juros</b>.</p>
+</section>
+
+<section aria-labelledby="h-moeda">
+  <h2 id="h-moeda">Em reais ou em dólar? Essa é a diferença</h2>
+  <p class="sub lg">De cada 100 que cada país deve, quantos são na própria moeda e quantos são em moeda de fora:</p>
+  <div class="leg"><span style="--c:var(--own)"><i></i>na própria moeda</span><span style="--c:var(--usd)"><i></i>em dólar ou outra moeda de fora</span></div>
+  <div class="coins3">
+    <div class="card" style="--c:var(--own)"><span class="flag" aria-hidden="true">🇧🇷</span><h3>Brasil</h3><div class="coins" data-u="4" role="img" aria-label="96 de cada 100 em reais, 4 em moeda de fora"></div><span class="n">96 em reais</span><p>Só 4 de cada 100 são em moeda de fora. E o Brasil tem <b>US$ 370 bilhões</b> guardados em reserva, mais de quatro vezes essa parte.</p></div>
+    <div class="card" style="--c:var(--usd)"><span class="flag" aria-hidden="true">🇦🇷</span><h3>Argentina</h3><div class="coins" data-u="57" role="img" aria-label="57 de cada 100 em moeda de fora, 43 em pesos"></div><span class="n">57 em dólar</span><p>A maior parte é em dólar, moeda que a Argentina não pode fabricar. Para pagar, ela precisa conseguir dólar.</p></div>
+    <div class="card" style="--c:var(--own)"><span class="flag" aria-hidden="true">🇺🇸</span><h3>Estados Unidos</h3><div class="coins" data-u="0" role="img" aria-label="100 de cada 100 em dólar, que é a moeda deles"></div><span class="n">100 em dólar</span><p>Os EUA devem mais de <b>US$ 40 trilhões</b>, mais que tudo que o país produz em um ano. Mas devem em dólar, a moeda deles.</p></div>
+  </div>
+  <div class="lesson">
+    <div class="card" style="--c:var(--usd)"><b>Quem deve em dólar pode ficar sem ter como pagar</b><p>A Argentina deu calote em 2001 e precisou renegociar US$ 65 bilhões em 2020. Hoje é o país que mais deve ao FMI, e em 2025 fez o seu 23º acordo com o Fundo.</p></div>
+    <div class="card" style="--c:var(--own)"><b>Quem deve na própria moeda não fica sem moeda para pagar</b><p>O Banco Central pode criar reais. Por isso o risco de calote é bem menor.</p></div>
+    <div class="card" style="--c:var(--part)"><b>Mas não é de graça</b><p>Criar dinheiro demais faz os preços subirem. E dever muito faz quem empresta cobrar juros mais altos. Os EUA também sentem isso: gastam cerca de US$ 1,1 trilhão por ano com juros, mais do que com as Forças Armadas.</p></div>
+  </div>
+  <span class="src"><a href="https://www.tribunapr.com.br/noticias/economia/divida-publica-federal-atinge-r-929-trilhoes-em-agosto-de-2026/" target="_blank" rel="noopener">Tesouro, via Tribuna PR: dívida federal em agosto de 2026</a><a href="https://tribunadosertao.com.br/geral/2026/07/08/936471-posicao-cambial-liquida-do-bc-atinge-us-262269-bilhoes" target="_blank" rel="noopener">BC: reservas em junho de 2026</a><a href="https://dolarhoy.com/economia/la-deuda-bruta-nacional-crecio-en-enero-a-usd-460-934-millones-pese-a-fuertes-pagos-de-vencimientos-2026223121023" target="_blank" rel="noopener">DolarHoy: dívida argentina, jan. 2026</a><a href="https://english.aaj.tv/news/10467860" target="_blank" rel="noopener">AFP: calotes argentinos</a><a href="https://www.swissinfo.ch/spa/argentina-y-el-fmi%3A-cinco-claves-de-una-historia-recurrente/89159697" target="_blank" rel="noopener">EFE/Swissinfo: Argentina e FMI</a><a href="https://mercadoeconsumo.com.br/21/08/2026/economia/divida-dos-eua-ultrapassa-us-40-trilhoes-apos-governos-trump-e-biden/" target="_blank" rel="noopener">Estadão Conteúdo: dívida dos EUA</a><a href="https://www.moneytimes.com.br/divida-dos-eua-sobe-a-us-392-trilhoes-e-supera-o-pib-anual-do-pais-fets/" target="_blank" rel="noopener">Money Times: maior que o PIB</a><a href="https://www.crfb.org/press-releases/cbo-estimates-20-trillion-deficit-first-11-months-fy-2026" target="_blank" rel="noopener">CRFB: juros acima da defesa</a></span>
+</section>
+
+<section aria-labelledby="h-tempo">
+  <h2 id="h-tempo">O tamanho da dívida ao longo dos anos</h2>
+  <p class="sub lg">Para comparar, a dívida é medida contra tudo que o país produz em um ano (o PIB). De cada 100 reais produzidos, quanto o governo devia:</p>
+  <div class="card tl" id="tl"></div>
+  <p class="lg">A dívida subiu com Dilma, com Temer e com Bolsonaro na pandemia. Caiu em 2021 e 2022, com a volta da economia e a inflação alta, que aumenta o PIB em reais. Com Lula 3 voltou a subir, e a maior parte da alta vem dos juros.</p>
+  <p class="note">O IBGE revisou o PIB depois, então alguns números antigos mudaram um pouco. O fim de 2022 era 73,5% na época e hoje é 71,7%.</p>
+  <span class="src"><a href="https://www.tribunapr.com.br/noticias/economia/em-3-anos-divida-bruta-vai-de-53-para-72-do-pib/" target="_blank" rel="noopener">BC, via Tribuna PR: 2013</a><a href="https://www.folhavitoria.com.br/economia/divida-bruta-do-governo-geral-no-fim-de-2022-e-a-menor-desde-o-fim-de-2016/" target="_blank" rel="noopener">BC, via Folha Vitória: 2016, pico de 2020 e 2022</a><a href="https://www.gazetadopovo.com.br/economia/breves/bolsonaro-mandato-menor-divida-publica/" target="_blank" rel="noopener">Gazeta do Povo: 2018</a><a href="https://www.bemparana.com.br/noticias/economia/divida-bruta-do-brasil-atinge-829-do-pib-em-agosto-maior-nivel-em-cinco-anos-mostra-bc/" target="_blank" rel="noopener">Bem Paraná: 2022 revisado</a><a href="https://portaldeprefeitura.com.br/bastidores-da-politica/governo-federal/lula-divida-do-brasil-10-trilhoes/614225/" target="_blank" rel="noopener">Portal de Prefeitura: fim de 2025</a><a href="https://www.poder360.com.br/poder-economia/divida-bruta-atinge-829-do-pib-em-agosto-diz-banco-central/" target="_blank" rel="noopener">Poder360: agosto de 2026</a></span>
+</section>
+
+<section aria-labelledby="h-juros">
+  <h2 id="h-juros">R$ 1,18 trilhão de juros</h2>
+  <p class="sub lg">Foi quanto o governo (União, estados, municípios e estatais) gastou com juros em 12 meses, até agosto de 2026.</p>
+  <div class="card">
+    <span class="bign">R$ 1,18 tri</span>
+    <p class="lg">É quase <b>9 de cada 100 reais</b> que o país inteiro produziu no ano.</p>
+    <div class="pib" id="pib" role="img" aria-label="100 moedas, quase 9 pintadas: a parte do PIB que foi para juros"></div>
+  </div>
+  <h3>Por que os juros estão tão altos?</h3>
+  <div class="steps">
+    <div><p>O Banco Central sobe a taxa <b>Selic</b> para segurar a inflação. Ela ficou em <b>15% ao ano</b> de junho de 2025 a março de 2026, a maior em quase 20 anos. Em agosto de 2026 estava em 14%.</p></div>
+    <div><p><b>Mais da metade da dívida</b> (53 de cada 100 reais) segue a Selic. Quando a Selic sobe, a conta de juros sobe na mesma hora.</p></div>
+    <div><p>O governo quase não sobra dinheiro para pagar os juros. Então ele <b>pega mais emprestado</b> para pagar, e a dívida cresce.</p></div>
+  </div>
+  <div class="two">
+    <div class="card" style="--c:var(--accent)"><h3>Quem defende o governo diz</h3><p>A Selic está alta demais para a inflação de hoje, e é ela que faz a dívida crescer. Sem os juros, o rombo das contas em 12 meses foi pequeno: R$ 82 bilhões.</p></div>
+    <div class="card" style="--c:var(--usd)"><h3>Quem critica o governo diz</h3><p>Os juros são altos também porque o mercado desconfia das contas do governo. Quem empresta para quem gasta demais cobra mais caro.</p></div>
+  </div>
+  <span class="src"><a href="https://www.poder360.com.br/poder-economia/divida-bruta-atinge-829-do-pib-em-agosto-diz-banco-central/" target="_blank" rel="noopener">BC, via Poder360: juros e déficit em 12 meses</a><a href="https://movimentoeconomico.com.br/geral/redacao/2026/09/14/mercado-espera-novo-corte-da-selic-para-1375-na-reuniao-do-copom-desta-semana/" target="_blank" rel="noopener">Movimento Econômico: Selic</a><a href="https://www.tribunapr.com.br/noticias/economia/divida-publica-federal-atinge-r-929-trilhoes-em-agosto-de-2026/" target="_blank" rel="noopener">Tesouro: parte ligada à Selic</a></span>
+</section>
+
+<section aria-labelledby="h-quem">
+  <h2 id="h-quem">Quem paga e quem recebe</h2>
+  <p class="sub lg">O dinheiro dos juros sai dos impostos de todo mundo, ou vira dívida nova que alguém vai pagar depois. Mas ele não some: vai para quem emprestou. De cada 100 reais da dívida federal em reais, quem são os donos:</p>
+  <div class="card tl" id="donos"></div>
+  <p class="lg">“Previdência” são os fundos que pagam aposentadoria complementar de muitos trabalhadores. Fundos de investimento incluem o dinheiro de quem aplica no banco. Então parte dos juros volta para a população, mas <b>só para quem tem dinheiro aplicado</b>. Quem não tem só paga.</p>
+  <span class="src"><a href="https://www.tribunapr.com.br/noticias/economia/divida-publica-federal-atinge-r-929-trilhoes-em-agosto-de-2026/" target="_blank" rel="noopener">Tesouro, via Tribuna PR: donos da dívida, agosto de 2026</a></span>
+</section>
+
+<section aria-labelledby="h-caro">
+  <h2 id="h-caro">O que custa mais caro?</h2>
+  <p class="sub lg">Muita gente diz que o mais caro para o governo é perdoar dívidas e ajudar o agro. Comparando os valores de um ano:</p>
+  <div class="card tl" id="caro"></div>
+  <p class="lg">Os juros custam quase <b>o dobro</b> de todos os benefícios fiscais do governo federal juntos. A ajuda ao agro pesa, mas é bem menor. E a medida de 2026 para as dívidas rurais foi uma <b>renegociação</b>, com prazo maior e juros, não um perdão.</p>
+  <p class="note">Benefício fiscal, ou renúncia, é imposto que o governo deixa de cobrar, como o Simples Nacional das pequenas empresas e a isenção da cesta básica. Não sai do caixa, mas é dinheiro que deixa de entrar. Mesmo somando os benefícios dos estados (R$ 334 bi), o total fica abaixo dos juros.</p>
+  <span class="src"><a href="https://www.poder360.com.br/poder-economia/divida-bruta-atinge-829-do-pib-em-agosto-diz-banco-central/" target="_blank" rel="noopener">BC: juros</a><a href="https://paraibabusiness.com.br/governo-projeta-r-6208-bilhoes-em-renuncias/" target="_blank" rel="noopener">Receita, via Paraíba Business: benefícios fiscais de 2026</a><a href="https://brasil61.com/n/gastos-tributarios-do-brasil-em-2026-devem-chegar-a-7-1-do-pib-revela-pesquisa-da-fgv-bras2515048" target="_blank" rel="noopener">FGV, via Brasil 61: estados</a><a href="https://paraibabusiness.com.br/dividas-rurais-terao-mp-com-custo-de-ate-r-3-bilhoes-ao-ano/" target="_blank" rel="noopener">Fazenda: dívidas rurais</a><a href="https://www.novacana.com/noticias/subvencao-safra-custara-r-1-7-bilhao-2026-necessidade-recurso-extra-270726" target="_blank" rel="noopener">NovaCana: Plano Safra</a></span>
+</section>
+
+<section aria-labelledby="h-vf">
+  <h2 id="h-vf">É verdade?</h2>
+  <div class="vf">
+    <div class="vfi"><span class="badge f">Falso</span><p><b>“O Brasil vai quebrar igual a Argentina.”</b> Quase toda a dívida brasileira é em reais, e o país tem muitos dólares guardados. A Argentina quebrou porque devia em dólar.</p></div>
+    <div class="vfi"><span class="badge v">Verdade</span><p><b>“Dívida em reais é menos perigosa que dívida em dólar.”</b> Quem deve na própria moeda não fica sem moeda para pagar.</p></div>
+    <div class="vfi"><span class="badge f">Falso</span><p><b>“Então a dívida não é problema.”</b> Ela custa juros muito altos e está crescendo. Esse dinheiro poderia ir para outras coisas.</p></div>
+    <div class="vfi"><span class="badge v">Verdade</span><p><b>“Só de juros foram R$ 1,18 trilhão em 12 meses.”</b> É o número do Banco Central até agosto de 2026.</p></div>
+    <div class="vfi"><span class="badge m">Meia verdade</span><p><b>“Quem paga os juros é a população.”</b> Sai dos impostos e de dívida nova, que todos pagam. Mas parte do dinheiro volta para quem tem aplicação, aposentadoria complementar ou Tesouro Direto.</p></div>
+    <div class="vfi"><span class="badge f">Falso</span><p><b>“O que o governo paga de mais caro é perdão de dívidas bilionárias e o agro na safra.”</b> Os juros, de R$ 1,18 trilhão, são o maior gasto. Todos os benefícios fiscais federais somam R$ 621 bilhões, e os do agro, R$ 101 bilhões.</p></div>
+    <div class="vfi"><span class="badge v">Verdade</span><p><b>“Os Estados Unidos devem mais que o Brasil.”</b> Em tamanho e em proporção: a dívida deles passa do PIB inteiro. A diferença é que é em dólar, a moeda deles.</p></div>
+    <div class="vfi"><span class="badge f">Falso</span><p><b>“A dívida só cresce no governo Lula.”</b> Subiu com Dilma, com Temer e com Bolsonaro na pandemia. Caiu em 2021 e 2022, e voltou a subir com Lula 3.</p></div>
+  </div>
+</section>
+
+<section aria-labelledby="h-resumo">
+  <div class="verdict">
+    <h2 id="h-resumo">Resumindo</h2>
+    <ul>
+      <li>A dívida do Brasil é <b>quase toda em reais</b>. Por isso o risco de calote é bem menor que o da Argentina.</li>
+      <li>O que pesa são os <b>juros</b>: R$ 1,18 trilhão em 12 meses, o maior gasto do governo.</li>
+      <li>Os juros custam quase <b>o dobro</b> de todos os benefícios fiscais federais, incluindo os do agro.</li>
+      <li>Quem paga é todo mundo. Quem recebe é quem tem dinheiro aplicado.</li>
+    </ul>
+  </div>
+</section>
+
+<details class="mais">
+  <summary>Quer ver todos os números? Toque aqui</summary>
+  <div class="mais-body">
+    <h3>Dívida pública federal, agosto de 2026</h3>
+    <table>
+      <tr><th>Item</th><th>Valor</th></tr>
+      <tr><td>Total</td><td>R$ 9,29 tri</td></tr>
+      <tr><td>Em reais, dentro do país</td><td>R$ 8,94 tri</td></tr>
+      <tr><td>Em moeda de fora</td><td>R$ 348 bi</td></tr>
+      <tr><td>Ligada à Selic</td><td>52,7%</td></tr>
+      <tr><td>Ligada à inflação (IPCA)</td><td>23,2%</td></tr>
+      <tr><td>Juro fixo (prefixada)</td><td>20,3%</td></tr>
+      <tr><td>Ligada ao câmbio</td><td>3,7%</td></tr>
+      <tr><td>Custo médio em 12 meses</td><td>12,59% ao ano</td></tr>
+    </table>
+    <span class="src"><a href="https://www.tribunapr.com.br/noticias/economia/divida-publica-federal-atinge-r-929-trilhoes-em-agosto-de-2026/" target="_blank" rel="noopener">Tesouro Nacional, via Tribuna PR</a></span>
+    <h3>Contas de todo o governo, 12 meses até agosto de 2026</h3>
+    <table>
+      <tr><th>Item</th><th>Valor</th></tr>
+      <tr><td>Dívida bruta do governo geral</td><td>R$ 11,1 tri (82,9% do PIB)</td></tr>
+      <tr><td>Juros</td><td>R$ 1,182 tri (8,86% do PIB)</td></tr>
+      <tr><td>Déficit sem os juros (primário)</td><td>R$ 82,1 bi (0,62% do PIB)</td></tr>
+      <tr><td>Déficit com os juros (nominal)</td><td>R$ 1,264 tri (9,48% do PIB)</td></tr>
+    </table>
+    <span class="src"><a href="https://www.poder360.com.br/poder-economia/divida-bruta-atinge-829-do-pib-em-agosto-diz-banco-central/" target="_blank" rel="noopener">Banco Central, via Poder360</a></span>
+    <h3>Benefícios fiscais federais projetados para 2026</h3>
+    <p>Total de R$ 620,8 bilhões (4,53% do PIB). Maiores áreas: comércio e serviços, R$ 137,9 bi; Simples Nacional, R$ 120,1 bi; agricultura, R$ 101,3 bi (inclui cesta básica e isenções na exportação); assistência social, R$ 41,1 bi. Os estados somam mais R$ 333,7 bi, e o total do país chega a R$ 954,7 bi (FGV).</p>
+    <span class="src"><a href="https://paraibabusiness.com.br/governo-projeta-r-6208-bilhoes-em-renuncias/" target="_blank" rel="noopener">Paraíba Business</a><a href="https://brasil61.com/n/gastos-tributarios-do-brasil-em-2026-devem-chegar-a-7-1-do-pib-revela-pesquisa-da-fgv-bras2515048" target="_blank" rel="noopener">Brasil 61</a></span>
+    <h3>Agro: dívidas rurais e Plano Safra</h3>
+    <p>A medida provisória de 2026 renegocia pouco mais de R$ 100 bilhões em dívidas rurais, com até dez anos para pagar, e deve custar ao Tesouro de R$ 2 a 3 bilhões por ano. A ajuda nos juros do Plano Safra 2026/27 custa R$ 1,7 bilhão em 2026 e cerca de R$ 6,1 bilhões em 2027.</p>
+    <span class="src"><a href="https://paraibabusiness.com.br/dividas-rurais-terao-mp-com-custo-de-ate-r-3-bilhoes-ao-ano/" target="_blank" rel="noopener">Paraíba Business</a><a href="https://www.novacana.com/noticias/subvencao-safra-custara-r-1-7-bilhao-2026-necessidade-recurso-extra-270726" target="_blank" rel="noopener">NovaCana</a></span>
+    <h3>Argentina</h3>
+    <p>Dívida bruta de US$ 460,9 bilhões em janeiro de 2026; 57% da dívida em dia é em moeda de fora. Deve US$ 57,7 bilhões ao FMI. Em 2018 recebeu o maior empréstimo da história do FMI (US$ 57 bilhões aprovados), e em 2025 mais US$ 20 bilhões.</p>
+    <span class="src"><a href="https://dolarhoy.com/economia/la-deuda-bruta-nacional-crecio-en-enero-a-usd-460-934-millones-pese-a-fuertes-pagos-de-vencimientos-2026223121023" target="_blank" rel="noopener">DolarHoy</a><a href="https://www.swissinfo.ch/spa/argentina-y-el-fmi%3A-cinco-claves-de-una-historia-recurrente/89159697" target="_blank" rel="noopener">Swissinfo</a></span>
+    <h3>Estados Unidos</h3>
+    <p>Dívida total de US$ 40,05 trilhões em agosto de 2026, dos quais US$ 32,3 trilhões com o público. O PIB é de cerca de US$ 31 trilhões. Juros de cerca de US$ 1,1 trilhão por ano, acima do gasto com defesa.</p>
+    <span class="src"><a href="https://mercadoeconsumo.com.br/21/08/2026/economia/divida-dos-eua-ultrapassa-us-40-trilhoes-apos-governos-trump-e-biden/" target="_blank" rel="noopener">Mercado &amp; Consumo</a><a href="https://www.moneytimes.com.br/divida-dos-eua-sobe-a-us-392-trilhoes-e-supera-o-pib-anual-do-pais-fets/" target="_blank" rel="noopener">Money Times</a><a href="https://www.crfb.org/press-releases/cbo-estimates-20-trillion-deficit-first-11-months-fy-2026" target="_blank" rel="noopener">CRFB</a></span>
+    <h3>Duas medidas diferentes</h3>
+    <p>A dívida federal (R$ 9,29 tri) é só a do Tesouro. A dívida bruta do governo geral (R$ 11,1 tri) inclui estados, municípios e outras contas, e é a usada para comparar com o PIB.</p>
+  </div>
+</details>
+
+<footer>
+  <p>Cada item traz o link do Banco Central, do Tesouro ou da reportagem de onde saiu.</p>
+  <p>Atualizado em 9 de outubro de 2026.</p>
+</footer>
+</main>
+
+<script>
+(function(){
+document.querySelectorAll('.coins').forEach(el=>{const u=+el.dataset.u;let h='';for(let i=0;i<100;i++)h+=`<i class="${i>=100-u?'u':''}"></i>`;el.innerHTML=h;});
+let p='';for(let i=0;i<100;i++)p+=`<i class="${i<8?'j':i===8?'h':''}"></i>`;document.getElementById('pib').innerHTML=p;
+const fmt=v=>String(v).replace('.',',');
+const bars=(id,rows,max,unit,col)=>{document.getElementById(id).innerHTML=rows.map(r=>r[0]==='era'?`<div class="era">${r[1]}</div>`:`<div class="tr"><div class="lab">${r[0]}<span>${r[1]}</span></div><div class="t">${(()=>{const w=Math.max(r[2]/max*100,.6),t=r[4]||fmt(r[2])+unit;return w<26?`<span class="f" style="--c:${r[3]||col};width:${w}%"></span><span class="v" style="left:calc(${w}% + 8px)">${t}</span>`:`<span class="f" style="--c:${r[3]||col};width:${w}%">${t}</span>`})()}</div></div>`).join('');};
+bars('tl',[
+ ["era","Dilma"],
+ ["fim de 2013","antes da crise",53.2],
+ ["fim de 2016","depois da recessão (Dilma e Temer)",69.8],
+ ["era","Temer"],
+ ["fim de 2018","fim do governo",75.3],
+ ["era","Bolsonaro"],
+ ["out. 2020","pandemia, o pico",87.6,"var(--usd)"],
+ ["fim de 2022","fim do governo (revisado)",71.7],
+ ["era","Lula 3"],
+ ["fim de 2025","",78.7],
+ ["ago. 2026","mais recente",82.9]
+],100,'%','var(--accent)');
+bars('donos',[
+ ["Bancos","instituições financeiras",31.2],
+ ["Previdência","fundos de aposentadoria",22.6],
+ ["Fundos de investimento","",22.5],
+ ["Estrangeiros","",9.9,"var(--usd)"],
+ ["Seguradoras","",3.3],
+ ["Outros","governo, Tesouro Direto e outros",10.4,"var(--gray)"]
+],35,'%','var(--accent)');
+bars('caro',[
+ ["Juros da dívida","12 meses até ago. 2026",1182,"var(--accent)","R$ 1.182 bi"],
+ ["Todos os benefícios fiscais federais","projeção para 2026",621,"var(--own)","R$ 621 bi"],
+ ["Benefícios fiscais do agro","parte do total acima",101,"var(--own)","R$ 101 bi"],
+ ["Renegociação das dívidas rurais","custo por ano",3,"var(--own)","até R$ 3 bi"],
+ ["Juros do Plano Safra","2026",1.7,"var(--own)","R$ 1,7 bi"]
+],1182,'','var(--accent)');
+})();
+</script>
+
+</body></html>

@@ -19,7 +19,7 @@
 window.RV_DATA={
  kicker:"Rota do Tesouro · em gráficos",
  title:"A dívida do Brasil é um perigo?",
- answer:"Não quebra como a Argentina: <b>96 de cada 100 reais</b> da dívida são em reais. O que pesa são os <b>juros</b>, o maior gasto do governo.",
+ answer:"Todo país tem dívida, e isso é normal: governos pegam emprestado para investir e atravessar crises. O problema do Brasil é o <b>custo</b>: juros de R$ 1,18 trilhão em 12 meses, numa dívida que <b>voltou a crescer</b>.",
  full:"index.html",
  updated:"Dados até agosto de 2026 · atualizado em 12 de outubro de 2026",
  cards:[
@@ -28,7 +28,7 @@ window.RV_DATA={
    dots:{n:100,on:[[9,"var(--b)"]],max:170,alt:"100 moedas, 9 pintadas"},src:[["Banco Central, via Poder360","https://www.poder360.com.br/poder-economia/divida-bruta-atinge-829-do-pib-em-agosto-diz-banco-central/"]]},
   {type:"gauge",span:"s4",label:"Taxa Selic",title:"Juro básico ainda alto",value:14,max:20,suf:"%",sub:"ao ano em agosto de 2026",text:"Ficou em 15% de jun/2025 a mar/2026. 53 de cada 100 reais da dívida seguem a Selic.",
    src:[["Movimento Econômico","https://movimentoeconomico.com.br/geral/redacao/2026/09/14/mercado-espera-novo-corte-da-selic-para-1375-na-reuniao-do-copom-desta-semana/"]]},
-  {type:"waffles",span:"s8",label:"Em que moeda cada país deve",title:"Dever em dólar é o que quebra",
+  {type:"waffles",span:"s8",label:"Em que moeda cada país deve",title:"Dever em dólar é mais arriscado",
    legend:[["na própria moeda","var(--c)"],["em dólar ou moeda de fora","var(--b)"]],
    items:[
     {name:"🇧🇷 Brasil",on:[[96,"var(--c)"],[4,"var(--b)"]],big:"96 em reais",color:"var(--c)",alt:"96 de 100 em reais"},
@@ -41,14 +41,14 @@ window.RV_DATA={
    eras:[[2011,2016.4,"Dilma"],[2016.4,2018.99,"Temer"],[2019,2022.99,"Bolsonaro"],[2023,2027,"Lula 3"]],
    text:"Pico na pandemia. Caiu em 2021–22 e voltou a subir com Lula 3, puxada pelos juros.",
    src:[["Banco Central (várias reportagens)","index.html#h-tempo"]]},
-  {type:"bars",span:"s4",label:"O que custa mais caro, em um ano",title:"Juros custam quase o dobro de todos os benefícios fiscais",
+  {type:"bars",span:"s4",label:"O que custa mais caro, em um ano",title:"Juros e benefícios fiscais, lado a lado",
    items:[
     {name:"Juros da dívida",v:1182,label:"R$ 1.182 bi",color:"var(--b)",sub:"12 meses até ago. 2026"},
     {name:"Todos os benefícios fiscais federais",v:621,label:"R$ 621 bi",color:"var(--accent)",sub:"projeção para 2026"},
     {name:"Benefícios fiscais do agro",v:101,label:"R$ 101 bi",color:"var(--accent)"},
     {name:"Renegociação das dívidas rurais",v:3,label:"até R$ 3 bi/ano",color:"var(--accent)"},
     {name:"Juros do Plano Safra",v:1.7,label:"R$ 1,7 bi",color:"var(--accent)"}],
-   src:[["Receita","https://paraibabusiness.com.br/governo-projeta-r-6208-bilhoes-em-renuncias/"],["Fazenda","https://paraibabusiness.com.br/dividas-rurais-terao-mp-com-custo-de-ate-r-3-bilhoes-ao-ano/"],["NovaCana","https://www.novacana.com/noticias/subvencao-safra-custara-r-1-7-bilhao-2026-necessidade-recurso-extra-270726"]]},
+   text:"Comparação só de tamanho: são contas, períodos e conceitos diferentes. Benefício fiscal é imposto que deixa de entrar.",src:[["Receita","https://paraibabusiness.com.br/governo-projeta-r-6208-bilhoes-em-renuncias/"],["Fazenda","https://paraibabusiness.com.br/dividas-rurais-terao-mp-com-custo-de-ate-r-3-bilhoes-ao-ano/"],["NovaCana","https://www.novacana.com/noticias/subvencao-safra-custara-r-1-7-bilhao-2026-necessidade-recurso-extra-270726"]]},
   {type:"bars",span:"s4",label:"Quem recebe os juros",title:"Donos da dívida em reais",
    items:[
     {name:"Bancos",v:31.2,label:"31%"},{name:"Previdência (aposentadorias)",v:22.6,label:"23%"},{name:"Fundos de investimento",v:22.5,label:"23%"},
@@ -58,7 +58,7 @@ window.RV_DATA={
   {type:"flow",span:"s6",label:"Por que a dívida cresce",title:"O ciclo dos juros",
    steps:[{emo:"🏦",name:"BC sobe a Selic",sub:"para segurar a inflação"},{emo:"📈",name:"Juro da dívida sobe",sub:"53% segue a Selic",hot:1},{emo:"💸",name:"Governo pega mais emprestado",sub:"para pagar os juros"},{emo:"🔁",name:"Dívida cresce"}]},
   {type:"verdicts",span:"s6",label:"É verdade?",
-   items:[["f","“O Brasil vai quebrar igual à Argentina.”"],["v","“Só de juros foram R$ 1,18 tri em 12 meses.”"],["m","“Quem paga os juros é a população.”"],["f","“O mais caro é perdão de dívida e o agro.”"],["f","“A dívida só cresce com Lula.”"]]}
+   items:[["m","“O Brasil vai quebrar igual à Argentina.”"],["v","“Só de juros foram R$ 1,18 tri em 12 meses.”"],["m","“Quem paga os juros é a população.”"],["m","“O maior gasto é o agro ou o perdão de dívidas.”"],["f","“A dívida só cresce com Lula.”"]]}
  ]};
 </script>
 <script src="https://fcarvalhodev.github.io/rotas/visual/visual.js"></script>

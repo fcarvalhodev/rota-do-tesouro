@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rota do Tesouro em gráficos</title>
+<meta name="description" content="A dívida do Brasil em uma tela: reais x dólar, juros de R$ 1,18 trilhão, quem recebe e o que custa mais caro.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fcarvalhodev.github.io/rotas/visual/visual.css">
+<style>
+:root{--accent:#4b5563;--hero:#3b4452}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--accent:#aab3bf;--hero:#3b4452}}
+:root[data-theme="dark"]{--accent:#aab3bf;--hero:#3b4452}
+.hero{background:var(--hero);border-color:var(--hero)}.hero .go a{color:var(--hero)}
+</style>
+</head><body>
+<style>/* barra comum das Rotas */.rotas-bar{border-bottom:1px solid var(--line);background:var(--bg);font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}.rotas-bar>div{max-width:880px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px}.rotas-bar a{color:var(--muted);text-decoration:none;padding-block:2px;border-bottom:2px solid transparent}.rotas-bar a:hover{color:var(--ink)}.rotas-bar a[aria-current]{color:var(--ink);border-bottom-color:var(--accent)}.rotas-bar .rb-home{color:var(--accent);font-weight:600}.rv-btn{display:inline-flex;align-items:center;gap:8px;justify-self:start;font-family:var(--ui,system-ui);font-weight:800;font-size:16px;letter-spacing:.02em;text-decoration:none;color:var(--paper,#fff);background:var(--accent);padding:10px 16px;border-radius:999px;box-shadow:0 2px 0 rgba(0,0,0,.15)}.rv-btn:hover{filter:brightness(1.08)}.rv-btn:focus-visible{outline:3px solid var(--ink);outline-offset:2px}.rotas-bar a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}</style><style>/* padrão das Rotas: formato fácil */body{font-size:19px;line-height:1.7}h1{font-family:var(--display);font-stretch:62%;font-weight:900;font-size:clamp(46px,11vw,104px);line-height:.9;text-transform:uppercase;overflow-wrap:anywhere}h2{font-family:var(--display);font-stretch:66%;font-weight:800;font-size:clamp(34px,7vw,52px);line-height:.95;text-transform:uppercase}</style><nav class="rotas-bar" aria-label="Rotas"><div><a class="rb-home" href="https://fcarvalhodev.github.io/rotas/">Rotas</a><a href="https://fcarvalhodev.github.io/rota-washington/">Washington</a><a href="https://fcarvalhodev.github.io/rota-master/">Master</a><a href="https://fcarvalhodev.github.io/rota-curitiba/">Curitiba</a><a href="https://fcarvalhodev.github.io/rota-da-fe/">Fé</a><a href="https://fcarvalhodev.github.io/rota-esplanada/">Esplanada</a><a href="https://fcarvalhodev.github.io/rota-itamaraty/">Itamaraty</a><a href="https://fcarvalhodev.github.io/rota-da-picanha/">Picanha</a><a href="https://fcarvalhodev.github.io/rota-do-ibge/">IBGE</a><a href="https://fcarvalhodev.github.io/rota-velho-chico/">Velho Chico</a><a href="https://fcarvalhodev.github.io/rota-do-tesouro/" aria-current="page">Tesouro</a><a href="https://fcarvalhodev.github.io/rota-rouanet/">Rouanet</a><a href="https://fcarvalhodev.github.io/rota-dos-ventos/">Ventos</a></div></nav>
+
+<main class="rv" id="rv" aria-label="Rota do Tesouro em gráficos"></main>
+<script>
+window.RV_DATA={
+ kicker:"Rota do Tesouro · em gráficos",
+ title:"A dívida do Brasil é um perigo?",
+ answer:"Não quebra como a Argentina: <b>96 de cada 100 reais</b> da dívida são em reais. O que pesa são os <b>juros</b>, o maior gasto do governo.",
+ full:"index.html",
+ updated:"Dados até agosto de 2026 · atualizado em 12 de outubro de 2026",
+ cards:[
+  {type:"hero",span:"s4",rows:2},
+  {type:"big",span:"s4",label:"Juros em 12 meses",value:1.18,dec:2,pre:"R$ ",suf:" tri",unit:"quase 9 de cada 100 reais que o país produziu",
+   dots:{n:100,on:[[9,"var(--b)"]],max:170,alt:"100 moedas, 9 pintadas"},src:[["Banco Central, via Poder360","https://www.poder360.com.br/poder-economia/divida-bruta-atinge-829-do-pib-em-agosto-diz-banco-central/"]]},
+  {type:"gauge",span:"s4",label:"Taxa Selic",title:"Juro básico ainda alto",value:14,max:20,suf:"%",sub:"ao ano em agosto de 2026",text:"Ficou em 15% de jun/2025 a mar/2026. 53 de cada 100 reais da dívida seguem a Selic.",
+   src:[["Movimento Econômico","https://movimentoeconomico.com.br/geral/redacao/2026/09/14/mercado-espera-novo-corte-da-selic-para-1375-na-reuniao-do-copom-desta-semana/"]]},
+  {type:"waffles",span:"s8",label:"Em que moeda cada país deve",title:"Dever em dólar é o que quebra",
+   legend:[["na própria moeda","var(--c)"],["em dólar ou moeda de fora","var(--b)"]],
+   items:[
+    {name:"🇧🇷 Brasil",on:[[96,"var(--c)"],[4,"var(--b)"]],big:"96 em reais",color:"var(--c)",alt:"96 de 100 em reais"},
+    {name:"🇦🇷 Argentina",on:[[43,"var(--c)"],[57,"var(--b)"]],big:"57 em dólar",color:"var(--b)",alt:"57 de 100 em moeda de fora"},
+    {name:"🇺🇸 EUA",on:[[100,"var(--c)"]],big:"100 em dólar, a moeda deles",color:"var(--c)",alt:"100 de 100 na própria moeda"}],
+   text:"A Argentina deu calote em 2001 e renegociou US$ 65 bi em 2020. Os EUA devem US$ 40 tri, mais que o PIB, mas em dólar.",
+   src:[["Tesouro","https://www.tribunapr.com.br/noticias/economia/divida-publica-federal-atinge-r-929-trilhoes-em-agosto-de-2026/"],["DolarHoy","https://dolarhoy.com/economia/la-deuda-bruta-nacional-crecio-en-enero-a-usd-460-934-millones-pese-a-fuertes-pagos-de-vencimientos-2026223121023"],["Mercado & Consumo","https://mercadoeconsumo.com.br/21/08/2026/economia/divida-dos-eua-ultrapassa-us-40-trilhoes-apos-governos-trump-e-biden/"]]},
+  {type:"line",span:"s4",label:"Dívida bruta, % do PIB",title:"Subiu em quase todos os governos",suf:"%",ymax:100,
+   points:[[2013.9,53.2,"fim de 2013"],[2016.9,69.8,"fim de 2016"],[2018.9,75.3,"fim de 2018"],[2020.8,87.6,"out. 2020, pandemia",1],[2022.9,71.7,"fim de 2022"],[2025.9,78.7,"fim de 2025",0,1],[2026.6,82.9,"ago. 2026"]],
+   eras:[[2011,2016.4,"Dilma"],[2016.4,2018.99,"Temer"],[2019,2022.99,"Bolsonaro"],[2023,2027,"Lula 3"]],
+   text:"Pico na pandemia. Caiu em 2021–22 e voltou a subir com Lula 3, puxada pelos juros.",
+   src:[["Banco Central (várias reportagens)","index.html#h-tempo"]]},
+  {type:"bars",span:"s4",label:"O que custa mais caro, em um ano",title:"Juros custam quase o dobro de todos os benefícios fiscais",
+   items:[
+    {name:"Juros da dívida",v:1182,label:"R$ 1.182 bi",color:"var(--b)",sub:"12 meses até ago. 2026"},
+    {name:"Todos os benefícios fiscais federais",v:621,label:"R$ 621 bi",color:"var(--accent)",sub:"projeção para 2026"},
+    {name:"Benefícios fiscais do agro",v:101,label:"R$ 101 bi",color:"var(--accent)"},
+    {name:"Renegociação das dívidas rurais",v:3,label:"até R$ 3 bi/ano",color:"var(--accent)"},
+    {name:"Juros do Plano Safra",v:1.7,label:"R$ 1,7 bi",color:"var(--accent)"}],
+   src:[["Receita","https://paraibabusiness.com.br/governo-projeta-r-6208-bilhoes-em-renuncias/"],["Fazenda","https://paraibabusiness.com.br/dividas-rurais-terao-mp-com-custo-de-ate-r-3-bilhoes-ao-ano/"],["NovaCana","https://www.novacana.com/noticias/subvencao-safra-custara-r-1-7-bilhao-2026-necessidade-recurso-extra-270726"]]},
+  {type:"bars",span:"s4",label:"Quem recebe os juros",title:"Donos da dívida em reais",
+   items:[
+    {name:"Bancos",v:31.2,label:"31%"},{name:"Previdência (aposentadorias)",v:22.6,label:"23%"},{name:"Fundos de investimento",v:22.5,label:"23%"},
+    {name:"Estrangeiros",v:9.9,label:"10%",color:"var(--b)"},{name:"Seguradoras",v:3.3,label:"3%"},{name:"Outros, inclui Tesouro Direto",v:10.4,label:"10%",color:"var(--d)"}],
+   text:"Todo mundo paga; recebe quem tem dinheiro aplicado.",
+   src:[["Tesouro, ago. 2026","https://www.tribunapr.com.br/noticias/economia/divida-publica-federal-atinge-r-929-trilhoes-em-agosto-de-2026/"]]},
+  {type:"flow",span:"s6",label:"Por que a dívida cresce",title:"O ciclo dos juros",
+   steps:[{emo:"🏦",name:"BC sobe a Selic",sub:"para segurar a inflação"},{emo:"📈",name:"Juro da dívida sobe",sub:"53% segue a Selic",hot:1},{emo:"💸",name:"Governo pega mais emprestado",sub:"para pagar os juros"},{emo:"🔁",name:"Dívida cresce"}]},
+  {type:"verdicts",span:"s6",label:"É verdade?",
+   items:[["f","“O Brasil vai quebrar igual à Argentina.”"],["v","“Só de juros foram R$ 1,18 tri em 12 meses.”"],["m","“Quem paga os juros é a população.”"],["f","“O mais caro é perdão de dívida e o agro.”"],["f","“A dívida só cresce com Lula.”"]]}
+ ]};
+</script>
+<script src="https://fcarvalhodev.github.io/rotas/visual/visual.js"></script>
+</body></html>

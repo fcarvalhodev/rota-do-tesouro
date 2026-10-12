@@ -36,11 +36,14 @@ window.RV_DATA={
     {name:"🇺🇸 EUA",on:[[100,"var(--c)"]],big:"100 em dólar, a moeda deles",color:"var(--c)",alt:"100 de 100 na própria moeda"}],
    text:"A Argentina deu calote em 2001 e renegociou US$ 65 bi em 2020. Os EUA devem US$ 40 tri, mais que o PIB, mas em dólar.",
    src:[["Tesouro","https://www.tribunapr.com.br/noticias/economia/divida-publica-federal-atinge-r-929-trilhoes-em-agosto-de-2026/"],["DolarHoy","https://dolarhoy.com/economia/la-deuda-bruta-nacional-crecio-en-enero-a-usd-460-934-millones-pese-a-fuertes-pagos-de-vencimientos-2026223121023"],["Mercado & Consumo","https://mercadoeconsumo.com.br/21/08/2026/economia/divida-dos-eua-ultrapassa-us-40-trilhoes-apos-governos-trump-e-biden/"]]},
-  {type:"line",span:"s4",label:"Dívida bruta, % do PIB",title:"Subiu em quase todos os governos",suf:"%",ymax:100,
-   points:[[2013.9,53.2,"fim de 2013"],[2016.9,69.8,"fim de 2016"],[2018.9,75.3,"fim de 2018"],[2020.8,87.6,"out. 2020, pandemia",1],[2022.9,71.7,"fim de 2022"],[2025.9,78.7,"fim de 2025",0,1],[2026.6,82.9,"ago. 2026"]],
-   eras:[[2011,2016.4,"Dilma"],[2016.4,2018.99,"Temer"],[2019,2022.99,"Bolsonaro"],[2023,2027,"Lula 3"]],
-   text:"Pico na pandemia. Caiu em 2021–22 e voltou a subir com Lula 3, puxada pelos juros.",
-   src:[["Banco Central (várias reportagens)","index.html#h-tempo"]]},
+  {type:"govs",span:"s12",label:"Dívida e juros, governo por governo",title:"A dívida subiu com quase todos. Os juros pesam mais agora",dmax:95,jmax:9.5,
+   items:[
+    {name:"Dilma",years:"2011 a mai. 2016",debt:[["fim 2013",53.2],["fim 2016",69.8]],delta:16.6,juros:[["2015",8.46]],note:"Recessão de 2015–16. O fim de 2016 já inclui os meses de Temer."},
+    {name:"Temer",years:"mai. 2016 a 2018",debt:[["fim 2016",69.8],["fim 2018",75.3]],delta:5.5,juros:[["2018",5.52]]},
+    {name:"Bolsonaro",years:"2019 a 2022",debt:[["fim 2018",75.3],["out. 2020",87.6,1],["fim 2022",73.5]],delta:-1.8,juros:[["2019",4.96],["2020",4.22],["2021",5.17],["2022",5.82]],note:"Pico na pandemia; terminou abaixo de onde começou. Números da época."},
+    {name:"Lula 3",years:"2023 até hoje",debt:[["fim 2022",71.7],["ago. 2026",82.9]],delta:11.2,juros:[["2023",6.56],["2024",8.05],["2025",7.9],["12m ago/26",8.86]],note:"Série revisada pelo IBGE: o fim de 2022 caiu de 73,5% para 71,7%."}],
+   text:"Juros de 2015 a 2026: os maiores pesos foram na recessão de Dilma e agora, com Lula 3 e a Selic em 15%. O menor foi em 2020, quando a Selic caiu, segundo o Banco Central.",
+   src:[["BC: dívida (várias reportagens)","index.html#h-tempo"],["Gazeta do Povo: 2018 e 2022","https://www.gazetadopovo.com.br/economia/breves/bolsonaro-mandato-menor-divida-publica/"],["BC 2015 (JB)","https://www.jb.com.br/economia/noticias/2016/01/29/amp/contas-do-setor-publico-fecham-ano-com-deficit-recorde-de-mais-de-r-111-bilhoes.html"],["BC 2018 (Money Times)","https://moneytimes.com.br/contas-publicas-fecham-2018-com-saldo-negativo-de-r-1082-bilhoes/"],["BC 2019–2020","https://www.bcb.gov.br/content/estatisticas/hist_estatisticasfiscais/202101_Texto_de_estatisticas_fiscais.pdf"],["BC 2021","https://www.bcb.gov.br/content/estatisticas/hist_estatisticasfiscais/202201_Texto_de_estatisticas_fiscais.pdf"],["BC 2022–2023","https://www.bcb.gov.br/content/estatisticas/hist_estatisticasfiscais/202401_Texto_de_estatisticas_fiscais.pdf"],["BC 2024","https://www.bcb.gov.br/content/estatisticas/hist_estatisticasfiscais/202501_Texto_de_estatisticas_fiscais.pdf"],["BNDES 2025","https://blogdodesenvolvimento.bndes.gov.br/serie/estudos-especiais/pPagamento-liquido-de-juros-nominais-no-Brasil-em-2025-p/"],["BC ago. 2026","https://www.poder360.com.br/poder-economia/divida-bruta-atinge-829-do-pib-em-agosto-diz-banco-central/"]]},
   {type:"bars",span:"s4",label:"O que custa mais caro, em um ano",title:"Juros e benefícios fiscais, lado a lado",
    items:[
     {name:"Juros da dívida",v:1182,label:"R$ 1.182 bi",color:"var(--b)",sub:"12 meses até ago. 2026"},
@@ -55,9 +58,9 @@ window.RV_DATA={
     {name:"Estrangeiros",v:9.9,label:"10%",color:"var(--b)"},{name:"Seguradoras",v:3.3,label:"3%"},{name:"Outros, inclui Tesouro Direto",v:10.4,label:"10%",color:"var(--d)"}],
    text:"Todo mundo paga; recebe quem tem dinheiro aplicado.",
    src:[["Tesouro, ago. 2026","https://www.tribunapr.com.br/noticias/economia/divida-publica-federal-atinge-r-929-trilhoes-em-agosto-de-2026/"]]},
-  {type:"flow",span:"s6",label:"Por que a dívida cresce",title:"O ciclo dos juros",
+  {type:"flow",span:"s4",label:"Por que a dívida cresce",title:"O ciclo dos juros",
    steps:[{emo:"🏦",name:"BC sobe a Selic",sub:"para segurar a inflação"},{emo:"📈",name:"Juro da dívida sobe",sub:"53% segue a Selic",hot:1},{emo:"💸",name:"Governo pega mais emprestado",sub:"para pagar os juros"},{emo:"🔁",name:"Dívida cresce"}]},
-  {type:"verdicts",span:"s6",label:"É verdade?",
+  {type:"verdicts",span:"s12",label:"É verdade?",
    items:[["m","“O Brasil vai quebrar igual à Argentina.”"],["v","“Só de juros foram R$ 1,18 tri em 12 meses.”"],["m","“Quem paga os juros é a população.”"],["m","“O maior gasto é o agro ou o perdão de dívidas.”"],["f","“A dívida só cresce com Lula.”"]]}
  ]};
 </script>

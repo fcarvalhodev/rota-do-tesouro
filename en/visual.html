@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Treasury Route in charts</title>
+<meta name="description" content="Brazil's debt on one screen: reais vs. dollars, R$1.18 trillion in interest, who gets paid and what costs more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fcarvalhodev.github.io/rotas/visual/visual.css">
+<style>
+:root{--accent:#4b5563;--hero:#3b4452}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--accent:#aab3bf;--hero:#3b4452}}
+:root[data-theme="dark"]{--accent:#aab3bf;--hero:#3b4452}
+.hero{background:var(--hero);border-color:var(--hero)}.hero .go a{color:var(--hero)}
+</style>
+</head><body>
+<style>/* barra comum das Rotas */.rotas-bar .rb-lang{margin-left:auto;color:var(--accent);font-weight:600}.rotas-bar{border-bottom:1px solid var(--line);background:var(--bg);font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}.rotas-bar>div{max-width:880px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px}.rotas-bar a{color:var(--muted);text-decoration:none;padding-block:2px;border-bottom:2px solid transparent}.rotas-bar a:hover{color:var(--ink)}.rotas-bar a[aria-current]{color:var(--ink);border-bottom-color:var(--accent)}.rotas-bar .rb-home{color:var(--accent);font-weight:600}.rv-btn{display:inline-flex;align-items:center;gap:8px;justify-self:start;font-family:var(--ui,system-ui);font-weight:800;font-size:16px;letter-spacing:.02em;text-decoration:none;color:var(--paper,#fff);background:var(--accent);padding:10px 16px;border-radius:999px;box-shadow:0 2px 0 rgba(0,0,0,.15)}.rv-btn:hover{filter:brightness(1.08)}.rv-btn:focus-visible{outline:3px solid var(--ink);outline-offset:2px}.rotas-bar a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}</style><style>/* padrão das Rotas: formato fácil */body{font-size:19px;line-height:1.7}h1{font-family:var(--display);font-stretch:62%;font-weight:900;font-size:clamp(46px,11vw,104px);line-height:.9;text-transform:uppercase;overflow-wrap:anywhere}h2{font-family:var(--display);font-stretch:66%;font-weight:800;font-size:clamp(34px,7vw,52px);line-height:.95;text-transform:uppercase}</style><nav class="rotas-bar" aria-label="Routes"><div><a class="rb-home" href="https://fcarvalhodev.github.io/rotas/en/">Routes</a><a href="https://fcarvalhodev.github.io/rota-washington/en/">Washington</a><a href="https://fcarvalhodev.github.io/rota-master/en/">Master</a><a href="https://fcarvalhodev.github.io/rota-curitiba/en/">Curitiba</a><a href="https://fcarvalhodev.github.io/rota-da-fe/en/">Faith</a><a href="https://fcarvalhodev.github.io/rota-esplanada/en/">Esplanada</a><a href="https://fcarvalhodev.github.io/rota-itamaraty/en/">Itamaraty</a><a href="https://fcarvalhodev.github.io/rota-da-picanha/en/">Picanha</a><a href="https://fcarvalhodev.github.io/rota-do-ibge/en/">IBGE</a><a href="https://fcarvalhodev.github.io/rota-velho-chico/en/">Velho Chico</a><a href="https://fcarvalhodev.github.io/rota-do-tesouro/en/" aria-current="page">Treasury</a><a href="https://fcarvalhodev.github.io/rota-rouanet/en/">Rouanet</a><a href="https://fcarvalhodev.github.io/rota-dos-ventos/en/">Winds</a><a href="https://fcarvalhodev.github.io/rota-do-algoritmo/en/">Algorithm</a><a class="rb-lang" href="../visual.html" hreflang="pt-BR" lang="pt-BR">PT</a></div></nav>
+
+<main class="rv" id="rv" aria-label="Treasury Route in charts"></main>
+<script>
+window.RV_DATA={lang:"en",
+ kicker:"Treasury Route · in icons",
+ title:"Is Brazil's debt a danger?",
+ answer:"Every country has debt, and that is normal. Brazil's problem is the <b>cost</b>: R$1.18 trillion in interest over 12 months, on a debt that <b>is growing again</b>.",
+ heroIcons:["iso-moeda","iso-banco","iso-cedula-real","iso-cofre","iso-moeda","iso-pct","iso-pilha","iso-moeda","iso-cedula-dolar","iso-moeda"],
+ full:"index.html",
+ updated:"Data through August 2026 · updated October 12, 2026 · original icons and Tabler Icons (MIT)",
+ cards:[
+  {type:"hero",span:"s4",rows:2},
+  {type:"iso",span:"s4",label:"Interest over 12 months",title:"R$9 out of every R$100 the country produces",size:22,
+   rows:[{name:"",icon:"iso-bloco",n:8.86,ghost:91.14,value:"",color:"var(--b)"}],
+   key:{icon:"iso-bloco",text:"R$1 out of every R$100 of GDP",color:"var(--b)"},src:[["Central Bank, via Poder360","https://www.poder360.com.br/poder-economia/divida-bruta-atinge-829-do-pib-em-agosto-diz-banco-central/"]]},
+  {type:"iso",span:"s4",label:"Interest and inflation, % a year",title:"Selic at 14%, inflation target at 3%",size:24,
+   rows:[{name:"Selic, Aug 2026",icon:"iso-pct",n:14,value:"14%",color:"var(--accent)"},{name:"Expected inflation, 2026",icon:"iso-pct",n:4.9,value:"4.9%",color:"var(--b)"},{name:"Inflation target",icon:"iso-pct",n:3,value:"3%",color:"var(--c)"}],
+   key:{icon:"iso-pct",text:"1 percentage point"},
+   src:[["Movimento Econômico","https://movimentoeconomico.com.br/geral/redacao/2026/09/14/mercado-espera-novo-corte-da-selic-para-1375-na-reuniao-do-copom-desta-semana/"],["Agência Brasil: target","https://agenciabrasil.ebc.com.br/economia/noticia/2025-03/previsao-para-inflacao-permanece-em-565-para-este-ano"]]},
+  {type:"iso",span:"s8",label:"One coin = R$25 billion, throughout this page",title:"Interest is bigger than everything else combined",size:22,
+   rows:[
+    {name:"Interest on the debt, 12 months",icon:"iso-moeda",n:47.28,value:"R$1,182 bn",color:"var(--b)"},
+    {name:"All tax benefits, 2026",icon:"iso-moeda",n:24.83,value:"R$621 bn",color:"var(--accent)"},
+    {name:"Agribusiness benefits",icon:"iso-moeda",n:4.05,value:"R$101 bn",color:"var(--c)"},
+    {name:"Day-to-day deficit, without interest",icon:"iso-moeda",n:3.28,value:"R$82 bn",color:"var(--accent)"},
+    {name:"Renegotiation of rural debts, per year",icon:"iso-moeda",n:.12,value:"up to R$3 bn",color:"var(--c)"},
+    {name:"Plano Safra interest subsidy, 2026",icon:"iso-moeda",n:.07,value:"R$1.7 bn",color:"var(--c)"}],
+   key:{icon:"iso-moeda",text:"R$25 billion",color:"var(--b)"},
+   text:"Different periods and accounts: compare only the size. Discounts on tax debts (Refis) have no official annual total.",
+   src:[["Central Bank","https://www.poder360.com.br/poder-economia/divida-bruta-atinge-829-do-pib-em-agosto-diz-banco-central/"],["Federal Revenue","https://paraibabusiness.com.br/governo-projeta-r-6208-bilhoes-em-renuncias/"],["Finance Ministry","https://paraibabusiness.com.br/dividas-rurais-terao-mp-com-custo-de-ate-r-3-bilhoes-ao-ano/"],["NovaCana","https://www.novacana.com/noticias/subvencao-safra-custara-r-1-7-bilhao-2026-necessidade-recurso-extra-270726"]]},
+  {type:"iso",span:"s6",label:"In which currency each country owes",title:"Owing in dollars is riskier",size:26,
+   rows:[
+    {name:"🇧🇷 Brazil",value:"96% in reais",parts:[{icon:"iso-cedula-real",n:19.2,color:"var(--c)"},{icon:"iso-cedula-dolar",n:.8,color:"var(--b)"}]},
+    {name:"🇦🇷 Argentina",value:"57% in dollars",parts:[{icon:"iso-cedula-peso",n:8.6,color:"var(--c)"},{icon:"iso-cedula-dolar",n:11.4,color:"var(--b)"}]},
+    {name:"🇺🇸 US",value:"100% in dollars, their own currency",parts:[{icon:"iso-cedula-dolar",n:20,color:"var(--c)"}]}],
+   key:[{icon:"iso-cedula-real",text:"5% of the debt, in its own currency",color:"var(--c)"},{icon:"iso-cedula-dolar",text:"in foreign currency",color:"var(--b)"}],
+   src:[["Treasury","https://www.tribunapr.com.br/noticias/economia/divida-publica-federal-atinge-r-929-trilhoes-em-agosto-de-2026/"],["DolarHoy","https://dolarhoy.com/economia/la-deuda-bruta-nacional-crecio-en-enero-a-usd-460-934-millones-pese-a-fuertes-pagos-de-vencimientos-2026223121023"]]},
+  {type:"isogrid",span:"s6",label:"Who gets the interest",title:"Out of every R$100 of interest",size:44,
+   groups:[
+    {name:"Banks",icon:"iso-banco",n:6,value:"31%",color:"var(--accent)"},
+    {name:"Pensions",icon:"iso-idoso",n:5,value:"23%",color:"var(--a)"},
+    {name:"Funds",icon:"iso-fundo",n:4,value:"23%",color:"var(--c)"},
+    {name:"Foreigners",icon:"iso-globo",n:2,value:"10%",color:"var(--b)"},
+    {name:"Insurers",icon:"iso-escudo",n:1,value:"3%",color:"var(--d)"},
+    {name:"Others, Tesouro Direto",icon:"iso-cofre",n:2,value:"10%",color:"var(--d)"}],
+   key:{icon:"iso-pessoa",text:"about R$5 out of every R$100"},
+   src:[["Treasury, Aug 2026","https://www.tribunapr.com.br/noticias/economia/divida-publica-federal-atinge-r-929-trilhoes-em-agosto-de-2026/"]]},
+  {type:"iso",span:"s12",label:"Gross debt, % of GDP",title:"The pile grew under almost every government",size:30,
+   rows:[
+    {head:"Dilma"},{name:"end of 2013",icon:"iso-pilha",n:10.64,value:"53.2%"},{name:"end of 2016",icon:"iso-pilha",n:13.96,value:"69.8% · +16.6"},
+    {head:"Temer"},{name:"end of 2018",icon:"iso-pilha",n:15.06,value:"75.3% · +5.5"},
+    {head:"Bolsonaro"},{name:"peak, Oct 2020",icon:"iso-pilha",n:17.52,value:"87.6%",color:"var(--b)"},{name:"end of 2022",icon:"iso-pilha",n:14.7,value:"73.5% · −1.8"},
+    {head:"Lula 3"},{name:"end of 2022, revised",icon:"iso-pilha",n:14.34,value:"71.7%"},{name:"Aug 2026",icon:"iso-pilha",n:16.58,value:"82.9% · +11.2"}],
+   key:{icon:"iso-pilha",text:"5% of GDP"},
+   text:"Each government with the figures of its time. The end of 2016 includes months under Temer.",
+   src:[["Central Bank, via Tribuna PR: 2013","https://www.tribunapr.com.br/noticias/economia/em-3-anos-divida-bruta-vai-de-53-para-72-do-pib/"],["Central Bank, via Folha Vitória","https://www.folhavitoria.com.br/economia/divida-bruta-do-governo-geral-no-fim-de-2022-e-a-menor-desde-o-fim-de-2016/"],["Gazeta do Povo","https://www.gazetadopovo.com.br/economia/breves/bolsonaro-mandato-menor-divida-publica/"],["Bem Paraná","https://www.bemparana.com.br/noticias/economia/divida-bruta-do-brasil-atinge-829-do-pib-em-agosto-maior-nivel-em-cinco-anos-mostra-bc/"],["Poder360","https://www.poder360.com.br/poder-economia/divida-bruta-atinge-829-do-pib-em-agosto-diz-banco-central/"]]},
+  {type:"iso",span:"s6",label:"What made the debt rise or fall",title:"Interest pushes it up",size:24,
+   rows:[
+    {head:"2025: +2.4 points"},
+    {name:"Interest",icon:"iso-sobe",n:8.9,value:"+8.9",color:"var(--no)"},
+    {name:"The economy grew",icon:"iso-desce",n:5.7,value:"−5.7",color:"var(--ok)"},
+    {name:"Exchange rate and other",icon:"iso-desce",n:.8,value:"−0.8",color:"var(--ok)"},
+    {head:"2026, through August: +4.2 points"},
+    {name:"Interest",icon:"iso-sobe",n:6.5,value:"+6.5",color:"var(--no)"},
+    {name:"More bonds issued",icon:"iso-sobe",n:1.5,value:"+1.5",color:"var(--no)"},
+    {name:"The economy grew",icon:"iso-desce",n:3.6,value:"−3.6",color:"var(--ok)"},
+    {name:"Exchange rate",icon:"iso-desce",n:.2,value:"−0.2",color:"var(--ok)"}],
+   key:[{icon:"iso-sobe",text:"+1 point of GDP",color:"var(--no)"},{icon:"iso-desce",text:"−1 point",color:"var(--ok)"}],
+   src:[["Central Bank, via Poder360: 2025","https://www.poder360.com.br/poder-economia/sob-lula-divida-bruta-vai-a-r-10-trilhoes-e-atinge-787-do-pib/"],["Central Bank, via SBT News: 2026","https://sbtnews.sbt.com.br/noticia/economia/divida-bruta-sobe-a-82-9-do-pib-em-agosto"]]},
+  {type:"scale",span:"s6",label:"Why not just cut the Selic?",title:"Lower interest makes the debt cheaper, but can bring inflation",tilt:5,
+   left:{icon:"iso-moeda",title:"Lower Selic",text:"About half the debt follows the Selic. Each point less would save close to R$47 bn a year (our rough calculation)."},
+   right:{icon:"iso-pct",title:"Inflation risk",text:"In 2020 the Selic went down to 2%. In 2021 inflation reached 10.06%, twice the top of the target range, and rates had to rise."},
+   text:"The decision is the Central Bank's, independent since 2021.",
+   src:[["Agência Brasil: Selic at 2% (2020)","https://agenciabrasil.ebc.com.br/economia/noticia/2020-08/copom-reduz-juros-basicos-da-economia-para-2-ao-ano"],["InvestNews: 2021 inflation","https://investnews.com.br/financas/inflacao-estoura-meta-2021/amp/"],["Agência Brasil: 3% target","https://agenciabrasil.ebc.com.br/economia/noticia/2025-03/previsao-para-inflacao-permanece-em-565-para-este-ano"],["Poder360: independence law","https://static.poder360.com.br/2023/02/lei-autonomia-bc-fev-2021.pdf"],["Movimento Econômico: Selic and forecast","https://movimentoeconomico.com.br/geral/redacao/2026/09/14/mercado-espera-novo-corte-da-selic-para-1375-na-reuniao-do-copom-desta-semana/"],["Treasury: share linked to the Selic","https://www.tribunapr.com.br/noticias/economia/divida-publica-federal-atinge-r-929-trilhoes-em-agosto-de-2026/"]]},
+  {type:"iso",span:"s6",label:"Tax benefits by area, 2026",title:"Tax that does not come in",size:22,
+   rows:[
+    {name:"Trade and services",icon:"iso-loja",n:5.52,value:"R$138 bn"},
+    {name:"Simples Nacional",icon:"iso-maleta",n:4.8,value:"R$120 bn"},
+    {name:"Agriculture",icon:"iso-trator",n:4.05,value:"R$101 bn",color:"var(--c)"},
+    {name:"Social assistance",icon:"iso-coracao",n:1.64,value:"R$41 bn"},
+    {name:"Science and technology",icon:"iso-frasco",n:.75,value:"R$19 bn"},
+    {name:"Health",icon:"iso-saude",n:.46,value:"R$11 bn"},
+    {name:"Education",icon:"iso-escola",n:.42,value:"R$11 bn"},
+    {name:"Other areas",icon:"iso-pontos",n:7.19,value:"R$180 bn",color:"var(--d)"}],
+   key:{icon:"iso-moeda",text:"each icon is worth R$25 billion, like the coins"},
+   src:[["Federal Revenue, via Paraíba Business","https://paraibabusiness.com.br/governo-projeta-r-6208-bilhoes-em-renuncias/"]]},
+  {type:"iso",span:"s6",label:"Federal subsidies, 2024",title:"R$678 bn in three kinds of help",size:22,
+   rows:[
+    {name:"Tax that does not come in",icon:"iso-moeda",n:22.55,value:"R$564 bn",color:"var(--a)"},
+    {name:"Government pays part of the interest (e.g. Plano Safra)",icon:"iso-moeda",n:2.6,value:"R$65 bn",color:"var(--b)"},
+    {name:"Cheap loans from public funds",icon:"iso-moeda",n:1.99,value:"R$50 bn",color:"var(--c)"}],
+   key:{icon:"iso-moeda",text:"R$25 billion"},text:"Only the first kind is called a tax benefit.",
+   src:[["Agência Brasil","https://agenciabrasil.ebc.com.br/economia/noticia/2025-08/subsidios-da-uniao-caem-pela-primeira-vez-em-4-anos"],["CNN Brasil","https://www.cnnbrasil.com.br/economia/macroeconomia/subsidios-da-uniao-somaram-r-678-bilhoes-em-2024-diz-governo/"]]},
+  {type:"verdicts",span:"s12",label:"Is it true?",
+   items:[["m","“Brazil will go bankrupt like Argentina.”","Not shown"],["v","“Interest alone came to R$1.18 tn in 12 months.”"],["m","“Ordinary people pay the interest.”"],["m","“The biggest expense is agribusiness or debt forgiveness.”","Limited comparison"],["f","“The debt only grows under Lula.”"]]}
+ ]};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://fcarvalhodev.github.io/rotas/visual/icons.js"></script>
+<script src="https://fcarvalhodev.github.io/rotas/visual/visual.js"></script>
+</body></html>

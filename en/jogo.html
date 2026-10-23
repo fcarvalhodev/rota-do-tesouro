@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Default or Rumour?</title>
+<meta name="description" content="Everyone has an opinion on Brazil's debt. You are the manager: separate real risk from default talk.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fcarvalhodev.github.io/rotas/jogos/jogo.css">
+<style>
+:root{--accent:#4b5563;--hero:#3b4452}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--accent:#aab3bf;--hero:#3b4452}}
+:root[data-theme="dark"]{--accent:#aab3bf;--hero:#3b4452}
+.hero{background:var(--hero);border-color:var(--hero)}.hero .go a{color:var(--hero)}
+</style>
+</head><body>
+<style>/* barra comum das Rotas */.rotas-bar .rb-lang{margin-left:auto;color:var(--accent);font-weight:600}.rotas-bar{border-bottom:1px solid var(--line);background:var(--bg);font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}.rotas-bar>div{max-width:880px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px}.rotas-bar a{color:var(--muted);text-decoration:none;padding-block:2px;border-bottom:2px solid transparent}.rotas-bar a:hover{color:var(--ink)}.rotas-bar a[aria-current]{color:var(--ink);border-bottom-color:var(--accent)}.rotas-bar .rb-home{color:var(--accent);font-weight:600}.rv-btn{display:inline-flex;align-items:center;gap:8px;justify-self:start;font-family:var(--ui,system-ui);font-weight:800;font-size:16px;letter-spacing:.02em;text-decoration:none;color:var(--paper,#fff);background:var(--accent);padding:10px 16px;border-radius:999px;box-shadow:0 2px 0 rgba(0,0,0,.15)}.rv-btn:hover{filter:brightness(1.08)}.rv-btn:focus-visible{outline:3px solid var(--ink);outline-offset:2px}.rotas-bar a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}</style><nav class="rotas-bar" aria-label="Routes"><div><a class="rb-home" href="https://fcarvalhodev.github.io/rotas/en/">Routes</a><a href="https://fcarvalhodev.github.io/rota-washington/en/">Washington</a><a href="https://fcarvalhodev.github.io/rota-master/en/">Master</a><a href="https://fcarvalhodev.github.io/rota-curitiba/en/">Curitiba</a><a href="https://fcarvalhodev.github.io/rota-da-fe/en/">Faith</a><a href="https://fcarvalhodev.github.io/rota-esplanada/en/">Esplanada</a><a href="https://fcarvalhodev.github.io/rota-itamaraty/en/">Itamaraty</a><a href="https://fcarvalhodev.github.io/rota-da-picanha/en/">Picanha</a><a href="https://fcarvalhodev.github.io/rota-do-ibge/en/">IBGE</a><a href="https://fcarvalhodev.github.io/rota-velho-chico/en/">Velho Chico</a><a href="https://fcarvalhodev.github.io/rota-do-tesouro/en/" aria-current="page">Treasury</a><a href="https://fcarvalhodev.github.io/rota-rouanet/en/">Rouanet</a><a href="https://fcarvalhodev.github.io/rota-dos-ventos/en/">Winds</a><a href="https://fcarvalhodev.github.io/rota-do-algoritmo/en/">Algorithm</a><a href="https://fcarvalhodev.github.io/rota-do-posto/en/">Pump</a><a href="https://fcarvalhodev.github.io/rota-das-queimadas/en/">Fires</a><a href="https://fcarvalhodev.github.io/rota-dos-games/en/">Games</a><a href="https://fcarvalhodev.github.io/rota-do-contracheque/en/">Paycheck</a><a href="https://fcarvalhodev.github.io/rota-palantir/en/">Palantir</a><a class="rb-lang" href="../jogo.html" hreflang="pt-BR" lang="pt-BR">PT</a></div></nav>
+<main class="jg" id="jg" aria-live="polite"><noscript>This game needs JavaScript. <a href="index.html">Read the route</a>.</noscript></main>
+<script>
+window.JG_DATA={
+ "kicker": "Rota do Tesouro · game",
+ "title": "Default or Rumour?",
+ "host": [
+  "🏦",
+  "Town-square bank manager"
+ ],
+ "emo": "💰",
+ "intro": "Everyone has an opinion on Brazil's debt. You are the manager: separate real risk from default talk.",
+ "rounds": [
+  {
+   "type": "boato",
+   "title": "The manager's desk",
+   "how": "read the claim going around and say whether it is True, Half true, False or No proof.",
+   "n": 7,
+   "items": [
+    {
+     "c": "Brazil will go bankrupt like Argentina.",
+     "v": "m",
+     "e": "The currency composition is different. That reduces one vulnerability, but it does not allow predicting a crisis nor guarantee zero risk.",
+     "s": []
+    },
+    {
+     "c": "Debt in reais is less dangerous than debt in dollars.",
+     "v": "m",
+     "e": "It reduces the currency mismatch, but does not eliminate problems with interest, inflation and refinancing.",
+     "s": []
+    },
+    {
+     "c": "So the debt is not a problem.",
+     "v": "f",
+     "e": "It costs very high interest and is growing. That money could go to other things.",
+     "s": []
+    },
+    {
+     "c": "Interest alone came to R$1.18 trillion in 12 months.",
+     "v": "v",
+     "e": "That is the accrued nominal interest published by the Central Bank, not simply cash payments.",
+     "s": []
+    },
+    {
+     "c": "Ordinary people pay the interest.",
+     "v": "m",
+     "e": "It comes out of taxes and new debt, which everyone pays. But part of the money goes back to people with investments, supplementary pensions or Tesouro Direto.",
+     "s": []
+    },
+    {
+     "c": "The biggest expense is agribusiness or debt forgiveness.",
+     "v": "m",
+     "e": "The values presented do not support that conclusion. Nominal interest, projected tax expenditures and rural renegotiation are different concepts with different scopes; nor do they prove that interest is the largest expense of the whole government.",
+     "s": []
+    },
+    {
+     "c": "The United States owes more than Brazil.",
+     "v": "v",
+     "e": "In size and in proportion: their debt exceeds their entire GDP. The difference is that it is in dollars, their own currency.",
+     "s": []
+    },
+    {
+     "c": "The debt only grows under Lula.",
+     "v": "f",
+     "e": "It rose under Dilma, under Temer and under Bolsonaro during the pandemic. It fell in 2021 and 2022, and rose again under Lula 3.",
+     "s": []
+    }
+   ]
+  }
+ ],
+ "ranks": [
+  [
+   0,
+   "Blacklisted for bad information."
+  ],
+  [
+   40,
+   "Rumour overdraft."
+  ],
+  [
+   65,
+   "A conservative investor."
+  ],
+  [
+   90,
+   "AAA rating in fact-checking."
+  ]
+ ],
+ "quips": {
+  "ok": [
+   "Right! Go ahead and publish.",
+   "Spot on. The source thanks you.",
+   "Correct. The family group chat will have to swallow it.",
+   "Nice! Old-school fact-checker."
+  ],
+  "no": [
+   "Wrong. But at least you did not share it.",
+   "Close. Read the explanation before forwarding it.",
+   "Not this time. It happens to journalists too.",
+   "Oops. The group-chat aunt won this one."
+  ]
+ },
+ "full": "index.html",
+ "updated": "Rotas · Rota do Tesouro"
+};
+</script>
+<script src="https://fcarvalhodev.github.io/rotas/jogos/jogo.js"></script>
+</body></html>

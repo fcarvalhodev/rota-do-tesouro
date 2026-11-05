@@ -22,7 +22,7 @@ window.RV_DATA={lang:"en",
  answer:"Every country has debt, and that is normal. Brazil's problem is the <b>cost</b>: R$1.18 trillion in interest over 12 months, on a debt that <b>is growing again</b>.",
  heroIcons:["iso-moeda","iso-banco","iso-cedula-real","iso-cofre","iso-moeda","iso-pct","iso-pilha","iso-moeda","iso-cedula-dolar","iso-moeda"],
  full:"index.html",
- updated:"Data through August 2026 · updated October 12, 2026 · original icons and Tabler Icons (MIT)",
+ updated:"Data up to August 2026 and the 2026 budget · updated on 5 November 2026 · own icons and Tabler Icons (MIT)",
  cards:[
   {type:"hero",span:"s4",rows:2},
   {type:"iso",span:"s4",label:"Interest over 12 months",title:"R$9 out of every R$100 the country produces",size:22,
@@ -43,6 +43,18 @@ window.RV_DATA={lang:"en",
    key:{icon:"iso-moeda",text:"R$25 billion",color:"var(--b)"},
    text:"Different periods and accounts: compare only the size. Discounts on tax debts (Refis) have no official annual total.",
    src:[["Central Bank","https://www.poder360.com.br/poder-economia/divida-bruta-atinge-829-do-pib-em-agosto-diz-banco-central/"],["Federal Revenue","https://paraibabusiness.com.br/governo-projeta-r-6208-bilhoes-em-renuncias/"],["Finance Ministry","https://paraibabusiness.com.br/dividas-rurais-terao-mp-com-custo-de-ate-r-3-bilhoes-ao-ano/"],["NovaCana","https://www.novacana.com/noticias/subvencao-safra-custara-r-1-7-bilhao-2026-necessidade-recurso-extra-270726"]]},
+  {type:"iso",span:"s12",label:"One coin = R$ 25 billion · 2026 budget",title:"Cut social spending or cut tax breaks?",size:22,
+   rows:[
+    {name:"Pensions (INSS)",icon:"iso-moeda",n:46.08,value:"R$ 1,152 bn",color:"var(--c)"},
+    {name:"Federal tax breaks",icon:"iso-moeda",n:24.83,value:"R$621 bn",color:"var(--accent)"},
+    {name:"Health",icon:"iso-moeda",n:10.44,value:"R$ 261 bn",color:"var(--c)"},
+    {name:"Bolsa Família",icon:"iso-moeda",n:6.34,value:"R$ 158.6 bn",color:"var(--c)"},
+    {name:"BPC",icon:"iso-moeda",n:5.22,value:"R$ 130.6 bn",color:"var(--c)"},
+    {name:"Special instalment plans, such as Refis (Unafisco estimate)",icon:"iso-moeda",n:1.76,value:"R$ 43.9 bn",color:"var(--b)"},
+    {name:"Discount to Americanas, 2025",icon:"iso-moeda",n:.02,value:"R$ 0.5 bn",color:"var(--b)"}],
+   key:{icon:"iso-moeda",text:"R$25 billion",color:"var(--accent)"},
+   text:"Tax breaks cost more than Bolsa Família, BPC and health combined. Debt discounts, like Americanas', are much smaller. And interest, at R$ 1,182 bn, exceeds all of this: cutting only social spending does not solve the debt, but more balanced accounts help lower interest rates over time.",
+   src:[["CNN: 2026 budget","https://www.cnnbrasil.com.br/economia/money/macroeconomia/previdencia-social-ultrapassa-r-1-trilhao-no-orcamento-de-2026/"],["Agência Câmara: Bolsa Família","https://www.camara.leg.br/noticias/1230586-orcamento-2026-programas-de-assistencia-social-terao-r-301-bilhoes"],["Federal Revenue","https://paraibabusiness.com.br/governo-projeta-r-6208-bilhoes-em-renuncias/"],["Unafisco","https://agorarn.com.br/ultimas/renuncias-fiscais-podem-chegar-a-r-9033-bilhoes-em-2026-estima-unafisco/"],["CNN: Americanas","https://www.cnnbrasil.com.br/economia/negocios/americanas-reduz-r-500-milhoes-em-debitos-em-acordo-com-pgfn/"]]},
   {type:"iso",span:"s6",label:"In which currency each country owes",title:"Owing in dollars is riskier",size:26,
    rows:[
     {name:"🇧🇷 Brazil",value:"96% in reais",parts:[{icon:"iso-cedula-real",n:19.2,color:"var(--c)"},{icon:"iso-cedula-dolar",n:.8,color:"var(--b)"}]},
@@ -107,7 +119,7 @@ window.RV_DATA={lang:"en",
    key:{icon:"iso-moeda",text:"R$25 billion"},text:"Only the first kind is called a tax benefit.",
    src:[["Agência Brasil","https://agenciabrasil.ebc.com.br/economia/noticia/2025-08/subsidios-da-uniao-caem-pela-primeira-vez-em-4-anos"],["CNN Brasil","https://www.cnnbrasil.com.br/economia/macroeconomia/subsidios-da-uniao-somaram-r-678-bilhoes-em-2024-diz-governo/"]]},
   {type:"verdicts",span:"s12",label:"Is it true?",
-   items:[["m","“Brazil will go bankrupt like Argentina.”","Not shown"],["v","“Interest alone came to R$1.18 tn in 12 months.”"],["m","“Ordinary people pay the interest.”"],["m","“The biggest expense is agribusiness or debt forgiveness.”","Limited comparison"],["f","“The debt only grows under Lula.”"]]}
+   items:[["m","“Brazil will go bankrupt like Argentina.”","Not shown"],["m","\"Cutting SUS and Bolsa Família would solve the debt and lower interest rates.\""],["f","\"A tax incentive is the same as debt forgiveness.\""],["v","\"Tax breaks cost more than Bolsa Família.\""],["m","\"The government forgave Americanas' debt.\""],["v","“Interest alone came to R$1.18 tn in 12 months.”"],["m","“Ordinary people pay the interest.”"],["m","“The biggest expense is agribusiness or debt forgiveness.”","Limited comparison"],["f","“The debt only grows under Lula.”"]]}
  ]};
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
